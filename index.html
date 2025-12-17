@@ -1257,40 +1257,164 @@
             mobiles: [
                 {
                     nom: "FORCE MAXIMALE",
-                    color: "#fb923c",
-                    objectif: "Développer la force maximale et la puissance",
+                    color: "#ef4444",
+                    definition: "Mobile visant à développer la capacité à produire la force maximale possible en une seule répétition. Travail sur le système nerveux (recrutement des unités motrices) et adaptation neuromusculaire.",
+                    objectif: "Soulever la charge la plus lourde possible, augmenter le 1RM",
                     charge: "85-100% du 1RM",
                     repetitions: "1-5 répétitions",
                     series: "4-6 séries",
-                    repos: "3-5 minutes",
-                    formes: ["Charges libres", "Poly-articulaires", "Tempo lent", "Pyramide"]
+                    repos: "3-5 minutes (récupération complète)",
+                    tempo: "Explosif en concentrique, contrôlé en excentrique",
+                    avantages: ["Augmentation significative de la force maximale", "Amélioration de la coordination neuromusculaire", "Gains de confiance et dépassement mental", "Base solide pour tous les autres mobiles"],
+                    inconvenients: ["Fatigue nerveuse importante", "Risque de blessure si technique incorrecte", "Peu d'effet sur l'hypertrophie directe", "Nécessite une récupération longue"],
+                    public: "Adhérent confirmé à Expert",
+                    exemple: "Développé Couché (Pectoraux) : 5 séries de 3 répétitions à 90% de 1RM. Si 1RM = 100kg → 90kg × 3 reps × 5 séries. Repos : 4 minutes entre séries. Focus : Explosivité sur la montée, contrôle sur la descente (3 secondes).",
+                    formes: ["Charges libres", "Poly-articulaires", "Pyramide ascendante", "Rest-pause"]
                 },
                 {
-                    nom: "ÉQUILIBRE / VOLUME",
-                    color: "#10b981",
-                    objectif: "Développer le volume musculaire (hypertrophie)",
+                    nom: "FORCE EXPLOSIVE (PUISSANCE)",
+                    color: "#f97316",
+                    definition: "Mobile développant la capacité à produire une force maximale dans un temps minimal. Combinaison de la force et de la vitesse (Puissance = Force × Vitesse). Sollicitation importante des fibres rapides de type IIx.",
+                    objectif: "Améliorer la vitesse d'exécution, l'explosivité, la détente",
+                    charge: "30-60% du 1RM",
+                    repetitions: "3-6 répétitions explosives",
+                    series: "4-6 séries",
+                    repos: "2-4 minutes",
+                    tempo: "Le plus explosif possible en concentrique",
+                    avantages: ["Développement de la puissance athlétique", "Amélioration de la vitesse de contraction", "Transfert direct vers les performances sportives", "Augmentation de la détente verticale/horizontale"],
+                    inconvenients: ["Technique très importante (risque de blessure)", "Fatigue du système nerveux", "Nécessite un équipement adapté (souvent)", "Peu d'effet sur la masse musculaire"],
+                    public: "Adhérent confirmé à Expert",
+                    exemple: "Squat Jump (Quadriceps/Fessiers) : 5 séries de 5 squat jumps à 40% de 1RM Squat. Si 1RM = 150kg → 60kg × 5 sauts × 5 séries. Repos : 3 minutes. Consigne : Descente contrôlée, explosion maximale, réception souple.",
+                    formes: ["Pliométrie", "Charges explosives", "Box jumps", "Olympic lifts"]
+                },
+                {
+                    nom: "HYPERTROPHIE (MASSE MUSCULAIRE)",
+                    color: "#3b82f6",
+                    definition: "Mobile axé sur l'augmentation du volume musculaire (hypertrophie myofibrillaire et sarcoplasmique). Travail sur le temps sous tension, le stress métabolique et les micro-lésions musculaires qui stimulent la croissance.",
+                    objectif: "Prise de masse musculaire, développement du volume",
                     charge: "65-80% du 1RM",
                     repetitions: "6-12 répétitions",
                     series: "3-5 séries",
-                    repos: "1-2 minutes",
-                    formes: ["Charges libres + machines", "Poly + isolation", "Tempo modéré", "Superset/drop sets"]
+                    repos: "60-90 secondes",
+                    tempo: "Contrôlé (3-1-1 ou 4-0-2)",
+                    avantages: ["Prise de masse musculaire visible", "Équilibre force/volume optimal", "Amélioration de la définition musculaire", "Bon compromis pour développement général"],
+                    inconvenients: ["Nécessite une alimentation adaptée (surplus calorique)", "Volume d'entraînement important", "Fatigue métabolique (brûlures, courbatures)", "Progrès plus lents que sur la force pure"],
+                    public: "Débutant à Expert",
+                    exemple: "Développé Incliné Haltères (Haut des Pectoraux) : 4 séries de 10 répétitions à 75% de 1RM. Si 1RM = 40kg/haltère → 30kg × 10 reps × 4 séries. Repos : 75 sec. Tempo : 3 sec descente, 1 sec pause, 1 sec montée.",
+                    formes: ["Drop sets", "Supersets", "Tempo contrôlé", "Volume training"]
+                },
+                {
+                    nom: "ENDURANCE DE FORCE",
+                    color: "#a855f7",
+                    definition: "Mobile visant à maintenir un niveau de force élevé sur une durée prolongée. Combinaison de force et d'endurance, développant la résistance à la fatigue tout en maintenant des charges significatives.",
+                    objectif: "Maintenir la performance sur la durée, résistance à la fatigue",
+                    charge: "60-75% du 1RM",
+                    repetitions: "12-20 répétitions",
+                    series: "3-4 séries",
+                    repos: "60-90 secondes",
+                    tempo: "Régulier et soutenu",
+                    avantages: ["Amélioration de la capacité de travail musculaire", "Bon compromis force/endurance", "Préparation physique pour sports d'endurance", "Développement de la résistance mentale"],
+                    inconvenients: ["Moins efficace pour force pure ou masse", "Fatigue métabolique importante (acide lactique)", "Nécessite une bonne condition physique de base", "Sensation de brûlure importante"],
+                    public: "Adhérent à Expert",
+                    exemple: "Leg Press (Quadriceps/Fessiers) : 4 séries de 15 répétitions à 70% de 1RM. Si 1RM = 300kg → 210kg × 15 reps × 4 séries. Repos : 75 sec. Consigne : Rythme constant, amplitude complète, respiration régulière.",
+                    formes: ["Séries longues", "Pyramide descendante", "Circuits résistance", "Complexes"]
                 },
                 {
                     nom: "ENDURANCE MUSCULAIRE",
-                    color: "#06b6d4",
-                    objectif: "Développer l'endurance et la résistance",
+                    color: "#10b981",
+                    definition: "Mobile orienté vers la capacité à maintenir un effort musculaire prolongé avec des charges légères. Développement des capacités aérobies du muscle, augmentation des capillaires et de l'endurance locale.",
+                    objectif: "Définition musculaire, endurance locale, tonification",
                     charge: "40-60% du 1RM",
-                    repetitions: "15-25+ répétitions",
+                    repetitions: "20-30+ répétitions",
                     series: "2-4 séries",
-                    repos: "30s-1 minute",
-                    formes: ["Circuits training", "Poids corps", "Tempo rapide", "Exercices fonctionnels"]
+                    repos: "30-60 secondes",
+                    tempo: "Rapide et continu",
+                    avantages: ["Excellente définition musculaire (sèche)", "Amélioration de l'endurance cardiovasculaire", "Faible risque de blessure", "Brûlage calorique important", "Récupération rapide"],
+                    inconvenients: ["Peu d'effet sur la force ou la masse", "Sensation de brûlure très importante", "Peut devenir monotone (volume élevé)", "Nécessite une concentration mentale"],
+                    public: "Débutant à Adhérent",
+                    exemple: "Curl Biceps Haltères (Biceps) : 3 séries de 25 répétitions à 50% de 1RM. Si 1RM = 20kg/haltère → 10kg × 25 reps × 3 séries. Repos : 45 sec. Consigne : Rythme soutenu, sans pause, rechercher la congestion.",
+                    formes: ["Circuit training", "HIIT musculation", "Burn sets", "AMRAP"]
+                },
+                {
+                    nom: "PERSONNALISÉ",
+                    color: "#a855f7",
+                    definition: "Mobile libre permettant de définir ses propres paramètres selon ses objectifs spécifiques, son niveau, ou des besoins particuliers (rééducation, sport spécifique, préparation physique).",
+                    objectif: "Adaptation totale aux besoins individuels",
+                    charge: "Au choix",
+                    repetitions: "Au choix",
+                    series: "Au choix",
+                    repos: "Au choix",
+                    tempo: "Au choix",
+                    avantages: ["Flexibilité totale", "Adaptation à tout objectif", "Possibilité de créer des méthodes hybrides", "Progression personnalisée"],
+                    inconvenients: ["Nécessite une bonne connaissance de l'entraînement", "Risque d'incohérence si mal configuré", "Manque de structure pour débutants"],
+                    public: "Adhérent confirmé à Expert",
+                    exemple: "Méthode 5-3-1 sur Squat : Semaine 1 (5 reps à 65%, 75%, 85%), Semaine 2 (3 reps à 70%, 80%, 90%), Semaine 3 (5/3/1 reps à 75%, 85%, 95%), Semaine 4 (Deload).",
+                    formes: ["Toutes méthodes", "Programmes spécifiques", "Périodisation", "Auto-régulation"]
                 }
             ],
 
             typesContraction: [
                 {type: "Concentrique", definition: "Muscle se raccourcit (phase positive)", exemple: "Monter la barre", mobile: "Force et puissance"},
                 {type: "Excentrique", definition: "Muscle s'allonge sous tension (phase négative)", exemple: "Descendre la barre", mobile: "Hypertrophie"},
-                {type: "Isométrique", definition: "Contraction statique sans mouvement", exemple: "Gainage planche", mobile: "Endurance et stabilisation"}
+                {type: "Isométrique", definition: "Contraction statique sans mouvement", exemple: "Gainage planche", mobile: "Endurance et stabilisation"},
+                {type: "Pliométrique", definition: "Contraction rapide après un étirement brusque du muscle. Enchaînement rapide d'une phase excentrique (étirement) puis concentrique (raccourcissement) qui utilise le réflexe myotatique et l'énergie élastique stockée.", exemple: "Descente rapide en squat jump puis saut explosif immédiat", mobile: "Force explosive et puissance"}
+            ],
+
+            formesEntrainement: [
+                {
+                    nom: "SÉRIES DROITES (STRAIGHT SETS)",
+                    definition: "Forme classique d'entraînement où l'on effectue le même nombre de répétitions avec la même charge sur toutes les séries. Base de la musculation traditionnelle.",
+                    structure: "X séries × Y répétitions à Z kg",
+                    avantages: ["Simple à comprendre et appliquer", "Facile à suivre et noter", "Excellent pour la progression linéaire", "Permet de maintenir la charge constante"],
+                    inconvenients: ["Peut devenir monotone", "Fatigue progressive affecte les dernières séries", "Peu de variation de stimulus"],
+                    public: "Débutant à Adhérent - Idéal pour apprendre",
+                    exemple: "Développé Couché : 4 séries de 8 répétitions à 80kg. Repos : 90 secondes entre séries."
+                },
+                {
+                    nom: "SÉRIES PYRAMIDALES",
+                    definition: "Variation de charge et/ou de répétitions d'une série à l'autre. Peut être ascendante (charge augmente, reps diminuent), descendante (charge diminue, reps augmentent) ou en double pyramide.",
+                    structure: "Charge et répétitions variables selon progression",
+                    avantages: ["Stimulation musculaire variée", "Permet d'atteindre intensités maximales et volumes élevés", "Excellent pour force + hypertrophie", "Moins monotone"],
+                    inconvenients: ["Plus complexe à programmer", "Nécessite plusieurs poids/réglages", "Fatigue importante si mal dosée", "Calculs nécessaires"],
+                    public: "Adhérant à Expert",
+                    exemple: "Squat Double Pyramide : 80kg×12, 100kg×10, 120kg×8, 140kg×6 (apex), puis 120kg×8, 100kg×10, 80kg×12. Repos : 2-3 min."
+                },
+                {
+                    nom: "SÉRIES DÉGRESSIVES (DROP SETS)",
+                    definition: "Enchaînement de plusieurs séries du même exercice sans temps de repos, en réduisant progressivement la charge à chaque palier. Pousse le muscle à l'échec musculaire répété.",
+                    structure: "Charge de départ → Réduction 20-30% → Réduction 20-30%",
+                    avantages: ["Congestion musculaire maximale", "Gain de temps (pas de repos)", "Excellent pour hypertrophie", "Intensité mentale importante", "Brûlage calorique élevé"],
+                    inconvenients: ["Très éprouvant (fatigue extrême)", "Nécessite changement rapide de poids", "Récupération longue nécessaire", "Risque de surentraînement si mal dosé"],
+                    public: "Adhérant confirmé à Expert - À utiliser avec parcimonie",
+                    exemple: "Leg Extension : 80kg×12 (échec) → immédiatement 60kg×10 (échec) → immédiatement 45kg×8+ (échec total). Aucun repos entre phases."
+                },
+                {
+                    nom: "SUPERSETS (SÉRIES ENCHAÎNÉES)",
+                    definition: "Enchaînement de 2 exercices différents sans temps de repos. Peut cibler le même muscle (superset agoniste) ou des muscles opposés (superset antagoniste).",
+                    structure: "Exercice A → immédiatement Exercice B → Repos",
+                    avantages: ["Gain de temps considérable (50%)", "Congestion musculaire intense", "Amélioration cardiovasculaire", "Brûlage calorique élevé", "Variation du stimulus"],
+                    inconvenients: ["Nécessite 2 postes disponibles (en salle)", "Très fatigant", "Difficile de maintenir charges lourdes", "Technique peut se dégrader"],
+                    public: "Adhérant à Expert",
+                    exemple: "Superset Bras : A) Curl Barre 40kg×10 → 0 sec repos → B) Barre au Front 30kg×12 → Repos 90 sec. Répéter 4 fois."
+                },
+                {
+                    nom: "SÉRIES EN REST-PAUSE",
+                    definition: "Série prolongée avec micro-pauses pour permettre récupération partielle et continuer au-delà de l'échec initial. Technique d'intensification qui pousse l'endurance de force.",
+                    structure: "Série échec → Pause 10-20 sec → Reprise 2-4 reps → Répéter",
+                    avantages: ["Dépasser l'échec musculaire", "Augmentation du volume total", "Excellent pour hypertrophie", "Sollicitation maximale des fibres", "Intensité mentale"],
+                    inconvenients: ["Très éprouvant nerveusement", "Nécessite une bonne technique stable", "Récupération longue", "Risque de blessure en fin de série"],
+                    public: "Expert uniquement - Phases d'intensification",
+                    exemple: "Développé Militaire 24kg : 8 reps (échec) → 15 sec pause → 4 reps (échec) → 15 sec pause → 2 reps → 15 sec pause → 1 rep. Total : 15 reps."
+                },
+                {
+                    nom: "CIRCUIT TRAINING / HIIT MUSCULATION",
+                    definition: "Enchaînement de plusieurs exercices (4-8) ciblant différents groupes musculaires avec temps de repos minimal. Peut être organisé en circuit (1 tour de tous les exos) ou en HIIT (travail/repos structuré).",
+                    structure: "Exercice 1 → 2 → 3 → 4 → ... → Repos → Répéter",
+                    avantages: ["Excellent pour condition physique générale", "Brûlage calorique maximal", "Travail cardiovasculaire + musculaire", "Gain de temps important", "Ludique et varié"],
+                    inconvenients: ["Peu efficace pour force maximale", "Nécessite beaucoup d'espace/matériel", "Technique peut être négligée (fatigue)", "Difficile en salle bondée"],
+                    public: "Débutant à Adhérant",
+                    exemple: "Circuit Full Body 6 exercices : 45 sec travail / 15 sec transition. Squat → Pompes → Fentes → Rowing → Planche → Burpees. 3 tours, 2 min repos entre tours."
+                }
             ],
 
             hygiene: {
@@ -2634,6 +2758,7 @@
                         <div class="flex gap-2 mb-4" style="overflow-x: auto;">
                             <button class="sub-tab-btn ${this.currentCoursTab === 'principes' ? 'active' : ''}" onclick="app.switchCoursTab('principes')">📖 Principes</button>
                             <button class="sub-tab-btn ${this.currentCoursTab === 'mobiles' ? 'active' : ''}" onclick="app.switchCoursTab('mobiles')">🎯 Mobiles</button>
+                            <button class="sub-tab-btn ${this.currentCoursTab === 'formes' ? 'active' : ''}" onclick="app.switchCoursTab('formes')">🏋️ Formes</button>
                             <button class="sub-tab-btn ${this.currentCoursTab === 'contractions' ? 'active' : ''}" onclick="app.switchCoursTab('contractions')">💪 Contractions</button>
                             <button class="sub-tab-btn ${this.currentCoursTab === 'hygiene' ? 'active' : ''}" onclick="app.switchCoursTab('hygiene')">🧘 Hygiène</button>
                             <button class="sub-tab-btn ${this.currentCoursTab === 'anatomie' ? 'active' : ''}" onclick="app.switchCoursTab('anatomie')">🫀 Anatomie</button>
@@ -2641,6 +2766,7 @@
                         </div>
                         ${this.currentCoursTab === 'principes' ? this.renderPrincipesTab() : ''}
                         ${this.currentCoursTab === 'mobiles' ? this.renderMobilesTab() : ''}
+                        ${this.currentCoursTab === 'formes' ? this.renderFormesTab() : ''}
                         ${this.currentCoursTab === 'contractions' ? this.renderContractionsTab() : ''}
                         ${this.currentCoursTab === 'hygiene' ? this.renderHygieneTab() : ''}
                         ${this.currentCoursTab === 'anatomie' ? this.renderAnatomieTab() : ''}
@@ -2711,11 +2837,114 @@
             }
 
             renderMobilesTab() {
-                return `<div>${coursData.mobiles.map(m => `<div class="exercise-card" style="border-left: 4px solid ${m.color};"><h4 style="color: ${m.color};">${m.nom}</h4><p class="text-white" style="opacity: 0.9; font-weight: 600;">${m.objectif}</p><table class="mobile-table"><tr><th>Charge</th><td>${m.charge}</td></tr><tr><th>Répétitions</th><td>${m.repetitions}</td></tr><tr><th>Séries</th><td>${m.series}</td></tr><tr><th>Repos</th><td>${m.repos}</td></tr></table><div style="margin-top: 1rem;"><div class="text-cyan" style="font-weight: 600; margin-bottom: 0.5rem;">🏋️ Formes :</div><ul>${m.formes.map(f => `<li>${f}</li>`).join('')}</ul></div></div>`).join('')}</div>`;
+                return `<div>${coursData.mobiles.map(m => `
+                    <div class="exercise-card" style="border-left: 4px solid ${m.color};">
+                        <h4 style="color: ${m.color}; font-size: 1.3rem; margin-bottom: 1rem;">${m.nom}</h4>
+                        
+                        ${m.definition ? `
+                            <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0.75rem; margin-bottom: 1rem;">
+                                <div class="text-cyan" style="font-weight: 600; margin-bottom: 0.5rem;">📖 Définition</div>
+                                <p class="text-white" style="opacity: 0.9;">${m.definition}</p>
+                            </div>
+                        ` : ''}
+                        
+                        <div style="background: linear-gradient(135deg, ${m.color}20 0%, ${m.color}10 100%); padding: 1rem; border-radius: 0.75rem; margin-bottom: 1rem;">
+                            <div class="text-white" style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem;">🎯 ${m.objectif}</div>
+                            <table class="mobile-table">
+                                <tr><th>💪 Charge</th><td>${m.charge}</td></tr>
+                                <tr><th>🔢 Répétitions</th><td>${m.repetitions}</td></tr>
+                                <tr><th>📊 Séries</th><td>${m.series}</td></tr>
+                                <tr><th>⏱️ Repos</th><td>${m.repos}</td></tr>
+                                ${m.tempo ? `<tr><th>🎵 Tempo</th><td>${m.tempo}</td></tr>` : ''}
+                            </table>
+                        </div>
+                        
+                        ${m.avantages ? `
+                            <div style="margin-bottom: 1rem;">
+                                <div class="text-cyan" style="font-weight: 600; margin-bottom: 0.5rem;">✅ Avantages</div>
+                                <ul style="margin-left: 1.5rem;">
+                                    ${m.avantages.map(a => `<li class="text-white" style="opacity: 0.9; margin-bottom: 0.25rem;">${a}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                        
+                        ${m.inconvenients ? `
+                            <div style="margin-bottom: 1rem;">
+                                <div class="text-cyan" style="font-weight: 600; margin-bottom: 0.5rem;">⚠️ Inconvénients</div>
+                                <ul style="margin-left: 1.5rem;">
+                                    ${m.inconvenients.map(i => `<li class="text-white" style="opacity: 0.9; margin-bottom: 0.25rem;">${i}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                        
+                        ${m.public ? `
+                            <div style="background: rgba(6, 182, 212, 0.1); padding: 0.75rem 1rem; border-radius: 0.5rem; margin-bottom: 1rem; border-left: 3px solid var(--primary-color);">
+                                <div class="text-cyan" style="font-weight: 600; display: inline;">👥 Public concerné : </div>
+                                <span class="text-white" style="opacity: 0.9;">${m.public}</span>
+                            </div>
+                        ` : ''}
+                        
+                        ${m.exemple ? `
+                            <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 0.75rem; margin-bottom: 1rem;">
+                                <div class="text-cyan" style="font-weight: 600; margin-bottom: 0.5rem;">📝 Exemple concret</div>
+                                <p class="text-white" style="opacity: 0.9; line-height: 1.6;">${m.exemple}</p>
+                            </div>
+                        ` : ''}
+                        
+                        <div>
+                            <div class="text-cyan" style="font-weight: 600; margin-bottom: 0.5rem;">🏋️ Formes d'entraînement associées</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                ${m.formes.map(f => `<span style="background: ${m.color}30; color: ${m.color}; padding: 0.4rem 0.8rem; border-radius: 0.5rem; font-size: 0.9rem; font-weight: 500;">${f}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}</div>`;
             }
 
             renderContractionsTab() {
                 return `<div>${coursData.typesContraction.map(t => `<div class="exercise-card"><h4>${t.type}</h4><p class="text-white" style="opacity: 0.9;"><strong>Définition :</strong> ${t.definition}</p><p class="text-cyan"><strong>Exemple :</strong> ${t.exemple}</p><p class="text-white" style="opacity: 0.8;"><strong>Mobile :</strong> ${t.mobile}</p></div>`).join('')}</div>`;
+            }
+
+            renderFormesTab() {
+                return `<div>${coursData.formesEntrainement.map(f => `
+                    <div class="exercise-card">
+                        <h4 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary-color);">${f.nom}</h4>
+                        
+                        <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0.75rem; margin-bottom: 1rem;">
+                            <div class="text-cyan" style="font-weight: 600; margin-bottom: 0.5rem;">📖 Définition</div>
+                            <p class="text-white" style="opacity: 0.9;">${f.definition}</p>
+                        </div>
+                        
+                        <div style="background: rgba(6, 182, 212, 0.1); padding: 0.75rem 1rem; border-radius: 0.5rem; margin-bottom: 1rem; border-left: 3px solid var(--primary-color);">
+                            <div class="text-cyan" style="font-weight: 600; display: inline;">📐 Structure : </div>
+                            <span class="text-white" style="opacity: 0.9;">${f.structure}</span>
+                        </div>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <div class="text-cyan" style="font-weight: 600; margin-bottom: 0.5rem;">✅ Avantages</div>
+                            <ul style="margin-left: 1.5rem;">
+                                ${f.avantages.map(a => `<li class="text-white" style="opacity: 0.9; margin-bottom: 0.25rem;">${a}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <div class="text-cyan" style="font-weight: 600; margin-bottom: 0.5rem;">⚠️ Inconvénients</div>
+                            <ul style="margin-left: 1.5rem;">
+                                ${f.inconvenients.map(i => `<li class="text-white" style="opacity: 0.9; margin-bottom: 0.25rem;">${i}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(6, 182, 212, 0.1); padding: 0.75rem 1rem; border-radius: 0.5rem; margin-bottom: 1rem; border-left: 3px solid var(--primary-color);">
+                            <div class="text-cyan" style="font-weight: 600; display: inline;">👥 Public concerné : </div>
+                            <span class="text-white" style="opacity: 0.9;">${f.public}</span>
+                        </div>
+                        
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 0.75rem;">
+                            <div class="text-cyan" style="font-weight: 600; margin-bottom: 0.5rem;">📝 Exemple concret</div>
+                            <p class="text-white" style="opacity: 0.9; line-height: 1.6;">${f.exemple}</p>
+                        </div>
+                    </div>
+                `).join('')}</div>`;
             }
 
             renderHygieneTab() {
