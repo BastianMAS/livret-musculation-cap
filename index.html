@@ -3121,35 +3121,55 @@
                 };
                 
                 const mobileInfo = {
-                    'Force': {
+                    'Force Maximale': {
                         color: '#ef4444',
                         objectif: 'Développer la force maximale',
                         charges: '85-100% de 1RM',
                         reps: '1-5 répétitions',
-                        series: '3-6 séries',
+                        series: '4-6 séries',
                         repos: '3-5 minutes',
                         exemple: 'Développé couché : 5 séries de 3 reps à 90% (si 1RM = 100kg → 90kg)',
                         conseil: 'Explosivité sur la phase concentrique, contrôle en excentrique'
                     },
-                    'Équilibre': {
+                    'Force Explosive': {
+                        color: '#f97316',
+                        objectif: 'Développer la puissance et l\'explosivité',
+                        charges: '30-60% de 1RM',
+                        reps: '3-6 répétitions',
+                        series: '4-6 séries',
+                        repos: '2-4 minutes',
+                        exemple: 'Squat jump : 5 séries de 5 sauts à 40% (si 1RM = 150kg → 60kg)',
+                        conseil: 'Vitesse et explosivité maximales, technique parfaite'
+                    },
+                    'Hypertrophie': {
                         color: '#3b82f6',
-                        objectif: 'Hypertrophie musculaire (prise de masse)',
+                        objectif: 'Prise de masse musculaire',
                         charges: '65-80% de 1RM',
                         reps: '6-12 répétitions',
                         series: '3-5 séries',
                         repos: '60-90 secondes',
                         exemple: 'Squat : 4 séries de 10 reps à 75% (si 1RM = 140kg → 105kg)',
-                        conseil: 'Tempo contrôlé, temps sous tension optimal pour hypertrophie'
+                        conseil: 'Tempo contrôlé, temps sous tension optimal'
                     },
-                    'Endurance': {
+                    'Endurance de Force': {
+                        color: '#a855f7',
+                        objectif: 'Maintenir la force sur la durée',
+                        charges: '60-75% de 1RM',
+                        reps: '12-20 répétitions',
+                        series: '3-4 séries',
+                        repos: '60-90 secondes',
+                        exemple: 'Leg Press : 4 séries de 15 reps à 70% (si 1RM = 300kg → 210kg)',
+                        conseil: 'Rythme constant, résistance à la fatigue'
+                    },
+                    'Endurance Musculaire': {
                         color: '#10b981',
-                        objectif: 'Endurance musculaire et définition',
+                        objectif: 'Endurance locale et définition',
                         charges: '40-60% de 1RM',
-                        reps: '15-25+ répétitions',
+                        reps: '20-30+ répétitions',
                         series: '2-4 séries',
                         repos: '30-60 secondes',
-                        exemple: 'Leg extension : 3 séries de 20 reps à 50% (si 1RM = 80kg → 40kg)',
-                        conseil: 'Rythme soutenu, brûlure musculaire recherchée'
+                        exemple: 'Curl biceps : 3 séries de 25 reps à 50% (si 1RM = 20kg → 10kg)',
+                        conseil: 'Rythme soutenu, rechercher la congestion'
                     },
                     'Personnalisé': {
                         color: '#a855f7',
@@ -3163,7 +3183,7 @@
                     }
                 };
                 
-                const currentMobileInfo = mobileInfo[session.type] || mobileInfo['Force'];
+                const currentMobileInfo = mobileInfo[session.type] || mobileInfo['Force Maximale'];
                 
                 return `
                     <div class="container">
@@ -3181,9 +3201,11 @@
                                 <div class="mb-4">
                                     <label class="text-white mb-2" style="display: block; font-size: 1.1rem;">Mobile d'entraînement</label>
                                     <select class="input" id="session-type" onchange="app.updateMobileInfo()" required>
-                                        <option value="Force" ${session.type === 'Force' ? 'selected' : ''}>💪 Force</option>
-                                        <option value="Équilibre" ${session.type === 'Équilibre' ? 'selected' : ''}>⚖️ Équilibre (Hypertrophie)</option>
-                                        <option value="Endurance" ${session.type === 'Endurance' ? 'selected' : ''}>🏃 Endurance</option>
+                                        <option value="Force Maximale" ${session.type === 'Force Maximale' ? 'selected' : ''}>💪 Force Maximale</option>
+                                        <option value="Force Explosive" ${session.type === 'Force Explosive' ? 'selected' : ''}>⚡ Force Explosive</option>
+                                        <option value="Hypertrophie" ${session.type === 'Hypertrophie' ? 'selected' : ''}>🏋️ Hypertrophie</option>
+                                        <option value="Endurance de Force" ${session.type === 'Endurance de Force' ? 'selected' : ''}>🔥 Endurance de Force</option>
+                                        <option value="Endurance Musculaire" ${session.type === 'Endurance Musculaire' ? 'selected' : ''}>🏃 Endurance Musculaire</option>
                                         <option value="Personnalisé" ${session.type === 'Personnalisé' ? 'selected' : ''}>⚙️ Personnalisé</option>
                                     </select>
                                 </div>
@@ -3276,13 +3298,15 @@
                 
                 // Mettre à jour les valeurs par défaut selon le mobile
                 const defaults = {
-                    'Force': {series: 5, repetitions: 3, intensite: 90, repos: 180},
-                    'Équilibre': {series: 4, repetitions: 10, intensite: 75, repos: 75},
-                    'Endurance': {series: 3, repetitions: 20, intensite: 50, repos: 45},
+                    'Force Maximale': {series: 5, repetitions: 3, intensite: 90, repos: 180},
+                    'Force Explosive': {series: 5, repetitions: 5, intensite: 45, repos: 150},
+                    'Hypertrophie': {series: 4, repetitions: 10, intensite: 75, repos: 75},
+                    'Endurance de Force': {series: 4, repetitions: 15, intensite: 70, repos: 75},
+                    'Endurance Musculaire': {series: 3, repetitions: 25, intensite: 50, repos: 45},
                     'Personnalisé': {series: 4, repetitions: 8, intensite: 70, repos: 90}
                 };
                 
-                const params = defaults[selectedType] || defaults['Force'];
+                const params = defaults[selectedType] || defaults['Force Maximale'];
                 
                 if (!isPersonnalise && selectedType !== 'Personnalisé') {
                     document.getElementById('session-series').value = params.series;
@@ -3293,35 +3317,55 @@
                 
                 // Mettre à jour l'affichage du mobile info sans recharger toute la page
                 const mobileInfo = {
-                    'Force': {
+                    'Force Maximale': {
                         color: '#ef4444',
                         objectif: 'Développer la force maximale',
                         charges: '85-100% de 1RM',
                         reps: '1-5 répétitions',
-                        series: '3-6 séries',
+                        series: '4-6 séries',
                         repos: '3-5 minutes',
                         exemple: 'Développé couché : 5 séries de 3 reps à 90% (si 1RM = 100kg → 90kg)',
                         conseil: 'Explosivité sur la phase concentrique, contrôle en excentrique'
                     },
-                    'Équilibre': {
+                    'Force Explosive': {
+                        color: '#f97316',
+                        objectif: 'Développer la puissance et l\'explosivité',
+                        charges: '30-60% de 1RM',
+                        reps: '3-6 répétitions',
+                        series: '4-6 séries',
+                        repos: '2-4 minutes',
+                        exemple: 'Squat jump : 5 séries de 5 sauts à 40% (si 1RM = 150kg → 60kg)',
+                        conseil: 'Vitesse et explosivité maximales, technique parfaite'
+                    },
+                    'Hypertrophie': {
                         color: '#3b82f6',
-                        objectif: 'Hypertrophie musculaire (prise de masse)',
+                        objectif: 'Prise de masse musculaire',
                         charges: '65-80% de 1RM',
                         reps: '6-12 répétitions',
                         series: '3-5 séries',
                         repos: '60-90 secondes',
                         exemple: 'Squat : 4 séries de 10 reps à 75% (si 1RM = 140kg → 105kg)',
-                        conseil: 'Tempo contrôlé, temps sous tension optimal pour hypertrophie'
+                        conseil: 'Tempo contrôlé, temps sous tension optimal'
                     },
-                    'Endurance': {
+                    'Endurance de Force': {
+                        color: '#a855f7',
+                        objectif: 'Maintenir la force sur la durée',
+                        charges: '60-75% de 1RM',
+                        reps: '12-20 répétitions',
+                        series: '3-4 séries',
+                        repos: '60-90 secondes',
+                        exemple: 'Leg Press : 4 séries de 15 reps à 70% (si 1RM = 300kg → 210kg)',
+                        conseil: 'Rythme constant, résistance à la fatigue'
+                    },
+                    'Endurance Musculaire': {
                         color: '#10b981',
-                        objectif: 'Endurance musculaire et définition',
+                        objectif: 'Endurance locale et définition',
                         charges: '40-60% de 1RM',
-                        reps: '15-25+ répétitions',
+                        reps: '20-30+ répétitions',
                         series: '2-4 séries',
                         repos: '30-60 secondes',
-                        exemple: 'Leg extension : 3 séries de 20 reps à 50% (si 1RM = 80kg → 40kg)',
-                        conseil: 'Rythme soutenu, brûlure musculaire recherchée'
+                        exemple: 'Curl biceps : 3 séries de 25 reps à 50% (si 1RM = 20kg → 10kg)',
+                        conseil: 'Rythme soutenu, rechercher la congestion'
                     },
                     'Personnalisé': {
                         color: '#a855f7',
@@ -3335,7 +3379,7 @@
                     }
                 };
                 
-                const currentInfo = mobileInfo[selectedType] || mobileInfo['Force'];
+                const currentInfo = mobileInfo[selectedType] || mobileInfo['Force Maximale'];
                 const mobileInfoDiv = document.getElementById('mobile-info');
                 if (mobileInfoDiv) {
                     mobileInfoDiv.style.background = `linear-gradient(135deg, ${currentInfo.color}20 0%, ${currentInfo.color}10 100%)`;
