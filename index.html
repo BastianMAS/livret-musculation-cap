@@ -1868,7 +1868,7 @@
                                 <div class="flex gap-2">
                                     <button class="btn btn-warning" onclick="app.exportData()">💾</button>
                                     <button class="btn btn-warning" onclick="app.importData()">📥</button>
-                                    <button class="btn btn-secondary" onclick="app.logout()">Déconnexion</button>
+                                    <button class="btn btn-danger" onclick="app.logout()" style="font-weight: 600;">🚪 Changer de profil</button>
                                 </div>
                             </div>
                             <div class="flex gap-2 mb-4" style="overflow-x: auto;">
@@ -3266,21 +3266,30 @@
                                 <div class="mb-4">
                                     <label class="text-white mb-2" style="display: block; font-size: 1.1rem;">🏋️ Exercices</label>
                                     <div class="flex gap-2 mb-2">
-                                        <input type="text" class="input" id="exercice-name" placeholder="Nom de l'exercice" style="flex: 1;">
-                                        <button type="button" class="btn btn-primary" onclick="app.addExercice()">➕</button>
+                                        <input 
+                                            type="text" 
+                                            class="input" 
+                                            id="exercice-name" 
+                                            placeholder="Nom de l'exercice" 
+                                            style="flex: 1;"
+                                            onkeypress="if(event.key === 'Enter') { event.preventDefault(); app.addExercice(); }"
+                                        >
+                                        <button type="button" class="btn btn-primary" onclick="app.addExercice()">➕ Ajouter</button>
                                     </div>
                                     ${this.exercicesTemp.length > 0 ? `
-                                        <div>
+                                        <div style="background: rgba(6, 182, 212, 0.1); padding: 1rem; border-radius: 0.75rem; border: 1px solid rgba(6, 182, 212, 0.3);">
+                                            <div class="text-cyan mb-2" style="font-weight: 600;">📋 ${this.exercicesTemp.length} exercice${this.exercicesTemp.length > 1 ? 's' : ''} ajouté${this.exercicesTemp.length > 1 ? 's' : ''}</div>
                                             ${this.exercicesTemp.map((ex, i) => `
-                                                <div class="exercice-item flex justify-between items-center">
-                                                    <span class="text-white">${i + 1}. ${ex}</span>
+                                                <div class="exercice-item flex justify-between items-center" style="background: rgba(15, 23, 42, 0.6); padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 0.5rem;">
+                                                    <span class="text-white" style="font-weight: 500;">${i + 1}. ${ex}</span>
                                                     <button type="button" class="btn btn-danger" style="padding: 0.5rem 1rem;" onclick="app.removeExercice(${i})">🗑️</button>
                                                 </div>
                                             `).join('')}
                                         </div>
                                     ` : `
-                                        <div class="text-center" style="padding: 2rem; opacity: 0.5;">
-                                            <div class="text-white">Aucun exercice ajouté</div>
+                                        <div class="text-center" style="padding: 2rem; opacity: 0.5; background: rgba(15, 23, 42, 0.3); border-radius: 0.75rem; border: 2px dashed rgba(255,255,255,0.2);">
+                                            <div class="text-white" style="font-size: 1.1rem;">👆 Ajoutez vos exercices ci-dessus</div>
+                                            <div class="text-white" style="opacity: 0.7; font-size: 0.9rem; margin-top: 0.5rem;">Vous pouvez en ajouter autant que vous voulez !</div>
                                         </div>
                                     `}
                                 </div>
@@ -3608,12 +3617,22 @@
             }
 
             logout() {
-                if (confirm('Voulez-vous verrouiller l\'accès (code requis à la prochaine connexion) ?')) {
-                    securite.revoquerAcces();
-                    this.currentView = 'code-access';
-                } else {
+                const message = 'Que voulez-vous faire ?\n\n' +
+                               '✅ OK = Changer de profil (garder le code de classe)\n' +
+                               '❌ Annuler = Verrouiller complètement (redemander le code)';
+                
+                if (confirm(message)) {
+                    // Changer de profil : on garde le code mais on retourne à la saisie du nom
                     this.currentView = 'login';
+                    // Ne pas révoquer l'accès, juste réinitialiser l'utilisateur
+                } else {
+                    // Verrouiller : tout supprimer, retour au code d'accès
+                    securite.revoquerAcces();
+                    IS_COACH_MODE = false;
+                    this.currentView = 'code-access';
                 }
+                
+                // Réinitialiser les données de l'utilisateur
                 this.currentUser = null;
                 this.sessions = [];
                 this.rmHistory = [];
@@ -3621,6 +3640,10 @@
                 this.sessionHistory = [];
                 this.calculatedCharges = {};
                 this.badges = [];
+                this.objectifs = [];
+                this.currentStreak = 0;
+                this.longestStreak = 0;
+                
                 this.render();
             }
 
@@ -3722,12 +3745,31 @@
             }
 
             addExercice() {
-                const exerciceName = document.getElementById('exercice-name').value.trim();
-                if (exerciceName) {
-                    this.exercicesTemp.push(exerciceName);
-                    document.getElementById('exercice-name').value = '';
-                    this.render();
+                const input = document.getElementById('exercice-name');
+                if (!input) {
+                    console.error('Input exercice-name non trouvé');
+                    return;
                 }
+                
+                const exerciceName = input.value.trim();
+                if (!exerciceName) {
+                    alert('⚠️ Entrez le nom d\'un exercice');
+                    return;
+                }
+                
+                // Vérifier les doublons
+                if (this.exercicesTemp.includes(exerciceName)) {
+                    alert('⚠️ Cet exercice est déjà dans la liste');
+                    input.value = '';
+                    return;
+                }
+                
+                this.exercicesTemp.push(exerciceName);
+                input.value = '';
+                input.focus(); // Remettre le focus pour ajouter rapidement le suivant
+                this.render();
+                
+                console.log('✅ Exercice ajouté:', exerciceName, '- Total:', this.exercicesTemp.length);
             }
 
             removeExercice(index) {
@@ -3737,7 +3779,12 @@
 
             saveSession(e) {
                 e.preventDefault();
-                const nom = document.getElementById("session-name").value;
+                
+                console.log('🔄 Sauvegarde de la séance...');
+                console.log('Muscles:', this.musclesTemp);
+                console.log('Exercices:', this.exercicesTemp);
+                
+                const nom = document.getElementById("session-name").value.trim();
                 const type = document.getElementById("session-type").value;
                 const series = parseInt(document.getElementById("session-series").value) || 5;
                 const repetitions = parseInt(document.getElementById("session-repetitions").value) || 5;
@@ -3745,20 +3792,26 @@
                 const repos = parseInt(document.getElementById("session-repos").value) || 180;
                 const isPersonnalise = document.getElementById("mode-personnalise")?.checked || type === "Personnalisé";
                 
-                if (this.musclesTemp.length === 0) {
-                    alert("Sélectionnez au moins un muscle");
+                if (!nom) {
+                    alert("⚠️ Entrez un nom pour la séance");
                     return;
                 }
+                
+                if (this.musclesTemp.length === 0) {
+                    alert("⚠️ Sélectionnez au moins un muscle");
+                    return;
+                }
+                
                 if (this.exercicesTemp.length === 0) {
-                    alert("Ajoutez au moins un exercice");
+                    alert("⚠️ Ajoutez au moins un exercice");
                     return;
                 }
                 
                 const sessionData = {
                     nom, 
                     type, 
-                    muscles: this.musclesTemp, 
-                    exercices: this.exercicesTemp,
+                    muscles: [...this.musclesTemp], 
+                    exercices: [...this.exercicesTemp],
                     series,
                     repetitions,
                     intensite,
@@ -3766,18 +3819,30 @@
                     isPersonnalise
                 };
                 
+                console.log('💾 Données de la séance:', sessionData);
+                
                 if (this.currentSession !== null) {
                     this.sessions[this.currentSession] = sessionData;
+                    console.log('✏️ Séance modifiée à l\'index', this.currentSession);
                 } else {
                     this.sessions.push(sessionData);
+                    console.log('➕ Nouvelle séance ajoutée, total:', this.sessions.length);
                 }
                 
                 this.saveSessions();
                 this.checkBadges();
+                
+                // Réinitialiser
                 this.currentSession = null;
+                this.exercicesTemp = [];
+                this.musclesTemp = [];
+                
+                // Retour au dashboard avec onglet séances
                 this.currentView = "dashboard";
                 this.currentTab = "sessions";
                 this.render();
+                
+                console.log('✅ Séance sauvegardée avec succès !');
             }
 
             initSessionForm() {
