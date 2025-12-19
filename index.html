@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livret de Musculation</title>
+    
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#06b6d4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Musculation">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         * {
@@ -2351,6 +2360,45 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                    
+                                    <!-- Tableau récapitulatif % -->
+                                    <h3 class="text-white mb-3 mt-4" style="font-size: 1.2rem;">📋 Tableau récapitulatif des charges</h3>
+                                    <div style="overflow-x: auto;">
+                                        <table class="charges-table" style="font-size: 0.9rem;">
+                                            <thead>
+                                                <tr>
+                                                    <th>%</th>
+                                                    <th>Charge</th>
+                                                    <th>%</th>
+                                                    <th>Charge</th>
+                                                    <th>%</th>
+                                                    <th>Charge</th>
+                                                    <th>%</th>
+                                                    <th>Charge</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ${(() => {
+                                                    let rows = '';
+                                                    for (let i = 50; i <= 120; i += 5) {
+                                                        if ((i - 50) % 20 === 0) {
+                                                            rows += '<tr>';
+                                                        }
+                                                        const charge = Math.round(this.calculatedCharges.rm * i / 100 * 2) / 2; // Arrondi à 0.5kg
+                                                        const isSelected = Math.abs(selectedPercentage - i) <= 2;
+                                                        rows += `
+                                                            <td style="${isSelected ? 'background: var(--primary-color); color: #0f172a; font-weight: 700;' : ''}">${i}%</td>
+                                                            <td style="${isSelected ? 'background: var(--primary-color); color: #0f172a; font-weight: 700;' : ''}" class="charge-value">${charge}kg</td>
+                                                        `;
+                                                        if ((i - 50) % 20 === 15) {
+                                                            rows += '</tr>';
+                                                        }
+                                                    }
+                                                    return rows;
+                                                })()}
+                                            </tbody>
+                                        </table>
+                                    </div>
                                     
                                     <div class="text-white mt-3" style="opacity: 0.7; font-size: 0.9rem; text-align: center; background: rgba(6, 182, 212, 0.1); padding: 1rem; border-radius: 0.75rem;">
                                         💡 <strong>Astuce :</strong> Le curseur te permet de trouver la charge exacte pour n'importe quel pourcentage entre 10% et 120% de ton 1RM
@@ -5167,6 +5215,19 @@
             });
         } else {
             app = new LivretApp();
+        }
+
+        // Enregistrement du Service Worker pour PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('✅ Service Worker enregistré:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('❌ Échec enregistrement Service Worker:', error);
+                    });
+            });
         }
     </script>
 </body>
